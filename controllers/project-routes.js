@@ -53,4 +53,38 @@ router.post('/', upload.single('image'), async(req, res) =>{
     }
 })
 
+router.delete('/:id', async(req,res) =>{
+    try{
+        let project = await Project.findByPk(req.params.id)
+
+        if(!project){
+            return res.status(400).json({ error: 'Project not found'})
+        }
+
+        await project.destroy()
+        res.status(200).json({message: 'Project deleted successfully'})
+    }catch(err){
+        res.status(500).json({message: "error deleting project", err})
+    }
+})
+
+router.put('/:id', async(req, res) =>{
+    try{
+        let {title, description} = req.body;
+        let project = await Project.findByPk(req.params.id)
+
+        if(!project){
+            res.status(404).json({ message:'Project Not found', error})
+        }
+
+        project.title = title || project.title;
+        project.description = description || project.description
+        
+        await project.save()
+        res.status(200).json({ message: 'Project updated successfully', project})
+    }catch(err){
+        res.status(500).json({ message: 'Error Updating Project', err})
+    }
+})
+
 module.exports = router;

@@ -1,0 +1,36 @@
+#welcome{
+    background-color: red;
+    height: 60%;
+    display: flex;
+}
+
+#links{
+    background-color: blue;
+    height: 40%;
+}
+
+#container-right{
+    background-color: green;
+    width: 30%;
+    height: 100%;
+}
+
+#home-container{
+    display: flex;
+    width: 75%;
+    height: 80vh;
+}
+
+#container-left{
+    width: 85%;
+}
+
+#body-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#welcome-nav{
+    display: flex;
+}
