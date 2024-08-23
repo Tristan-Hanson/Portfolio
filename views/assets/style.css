@@ -1,28 +1,29 @@
-#welcome{
-    background-color: red;
-    height: 60%;
-    display: flex;
-}
-
-#links{
-    background-color: blue;
-    height: 40%;
-}
-
-#container-right{
-    background-color: green;
-    width: 30%;
-    height: 100%;
-}
-
 #home-container{
     display: flex;
     width: 75%;
     height: 80vh;
 }
 
+/*welcome section*/
 #container-left{
     width: 85%;
+}
+
+#welcome-container{
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#welcome{
+    background-color: red;
+    height: 60%;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #body-container{
@@ -33,4 +34,19 @@
 
 #welcome-nav{
     display: flex;
+    justify-content: center;
+    align-items: baseline;
+}
+
+/* nav links */
+#links{
+    background-color: blue;
+    height: 40%;
+}
+
+/* right container*/
+#container-right{
+    background-color: green;
+    width: 30%;
+    height: 100%;
 }
