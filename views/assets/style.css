@@ -1,3 +1,18 @@
+body{
+    background-image: url(city-scene-gif.gif);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+*{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+#body-container{
+    box-sizing: border-box;
+}
+
 #home-container{
     display: flex;
     justify-content: space-around;
@@ -6,10 +21,15 @@
     box-sizing: border-box;
 }
 
-.section{
+section{
     border-radius: 25px;
-    padding: 10px;
     background-image: linear-gradient(to bottom right, rgb(26, 26, 26), rgb(66, 66, 66));
+    border: 2px solid white;
+}
+
+section:hover{
+    border:2px solid purple;
+    box-shadow: 0 0 35px purple;
 }
 
 /*welcome section*/
@@ -25,11 +45,11 @@
     flex-direction: column;
     justify-content: space-between;
     box-sizing: border-box;
-    padding-right: 10px;
+    gap: 10px;
     
 }
 
-#welcome-text{
+.welcome-text{
     color: white;
 }
 
@@ -83,15 +103,85 @@
 }
 /* nav links */
 #links{
-    background-color: blue;
     height: 40%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#current-works{
+    height: 100%;
+    width: 33%;
     box-sizing: border-box;
 }
 
+#link-left{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    box-sizing: border-box;
+    gap: 5px;
+    height: 100%;
+    width: 33%;
+    padding-left: 5px;
+}
+
+#link-gallery{
+    flex-grow: 2;
+}
+
+#link-resume{
+    flex-grow: 1;
+}
+
+#link-contact{
+    flex-grow: 1;
+}
+
+#link-right{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    box-sizing: border-box;
+    gap: 5px;
+    height: 100%;
+    width: 33%;
+    padding-left: 5px;
+}
+
+#clock-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    flex-grow: 2;
+}
+
+#link-time{
+    font-size: 2em;
+    color: white;
+}
+
+#link-tbd{
+    flex-grow: 1;
+}
+
+#link-mode{
+    flex-grow: 1;
+}
 /* right container*/
 #container-right{
-    background-color: green;
     width: 30%;
     height: 100%;
+}
+
+#about{
+    height: 80%;
+    margin-bottom: 5px;
     box-sizing: border-box;
 }
+
+#credits{
+    height: 20%;
+    box-sizing: border-box;
+}
+
