@@ -9,6 +9,15 @@ body{
 *{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+
+p{
+    color: white
+}
+
+li{
+    color: white;
+}
+
 #body-container{
     box-sizing: border-box;
 }
@@ -16,7 +25,7 @@ body{
 #home-container{
     display: flex;
     justify-content: space-around;
-    width: 75%;
+    width: 60%;
     height: 80vh;
     box-sizing: border-box;
 }
@@ -51,6 +60,7 @@ section:hover{
 
 .welcome-text{
     color: white;
+    padding: 10px;
 }
 
 #welcome{
@@ -98,7 +108,6 @@ section:hover{
 }
 
 .icon:hover{
-    background: var(--clr);
     box-shadow: 0 0 35px var(--clr);
 }
 /* nav links */
@@ -113,7 +122,14 @@ section:hover{
     height: 100%;
     width: 33%;
     box-sizing: border-box;
+    padding: 10px;
 }
+
+#current-works-title{
+    text-decoration: underline;
+    font-weight: bold;
+}
+
 
 #link-left{
     display: flex;
@@ -128,6 +144,24 @@ section:hover{
 
 #link-gallery{
     flex-grow: 2;
+}
+
+#linkto-contact{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    align-items: center;
+}
+
+#linkto-gallery{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
 }
 
 #link-resume{
@@ -152,7 +186,7 @@ section:hover{
 #clock-container{
     display: flex;
     justify-content: center;
-    align-items: center;    
+    align-items: center;
     flex-grow: 2;
 }
 
@@ -167,6 +201,9 @@ section:hover{
 
 #link-mode{
     flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 /* right container*/
 #container-right{
