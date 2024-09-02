@@ -1,1 +1,12 @@
-<div>Gallery</div>
+<button><a href="/">Back</a></button>
+<div id="project-container">
+    {{#each project}}
+    <section class="gallery-project">
+        <img src="{{image}}" class="gallery-image"></img>
+        <div>
+            <p>{{title}}</p>
+            <p>{{description}}</p>
+        </div>
+    </section>
+    {{/each}}
+</div>

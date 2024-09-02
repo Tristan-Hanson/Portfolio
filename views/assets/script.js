@@ -3,7 +3,6 @@ function updateClock() {
     const now = new Date();
     let hours = now.getHours();
     const minutes = String(now.getMinutes()).padStart(2, '0');
-    const seconds = String(now.getSeconds()).padStart(2, '0');
     let period = 'AM';
 
     if (hours > 12) {
@@ -16,7 +15,7 @@ function updateClock() {
     }
 
     const hoursString = String(hours).padStart(2, '0');
-    const timeString = `${hoursString}:${minutes}:${seconds} ${period}`;
+    const timeString = `${hoursString}:${minutes} ${period}`;
     document.getElementById('link-time').textContent = timeString;
 }
 

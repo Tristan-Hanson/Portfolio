@@ -10,12 +10,8 @@ body{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-p{
+p, li{
     color: white
-}
-
-li{
-    color: white;
 }
 
 #body-container{
@@ -31,7 +27,7 @@ li{
 }
 
 section{
-    border-radius: 25px;
+    border-radius: 10px;
     background-image: linear-gradient(to bottom right, rgb(26, 26, 26), rgb(66, 66, 66));
     border: 2px solid white;
 }
@@ -104,12 +100,12 @@ section:hover{
 
 .icon:after{
     background: purple;
-    translate
 }
 
 .icon:hover{
     box-shadow: 0 0 35px var(--clr);
 }
+
 /* nav links */
 #links{
     height: 40%;
@@ -195,10 +191,6 @@ section:hover{
     color: white;
 }
 
-#link-tbd{
-    flex-grow: 1;
-}
-
 #link-mode{
     flex-grow: 1;
     display: flex;
@@ -215,6 +207,7 @@ section:hover{
     height: 80%;
     margin-bottom: 5px;
     box-sizing: border-box;
+    padding: 10px;
 }
 
 #credits{
