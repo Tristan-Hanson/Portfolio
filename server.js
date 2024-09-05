@@ -4,8 +4,9 @@ const engine = require('express-handlebars');
 const path = require('path')
 const sequelize = require('./config/connect');
 const Project = require('./models/project')
+const User = require('./models/user')
 const s3Project = require('./s3Project')
-//const session = require('express-session');
+const session = require('express-session');
 //const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 const app = express();
@@ -15,21 +16,14 @@ app.use(express.static(path.join('views')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-
-/*
-not needed yet
 app.use(session({
   secret: 'krabbyPattySecretFormula',
   resave: false,
   saveUninitialized: true,
-  store: new SequelizeStore({
-    db: sequelize
-  }),
   cookie: {
     maxAge: 24 * 60 * 60 * 1000 // 1 day
   }
 }));
-*/
 
 app.engine('handlebars', engine.engine({ defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
