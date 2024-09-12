@@ -46,4 +46,37 @@ router.delete('/:id', async(req,res) =>{
     }
 })
 
+router.post('/login', async(req, res) =>{
+    try{
+        const {name, password} = req.body
+        const foundUser = await User.findOne({where: {name: name}})
+
+        if(!foundUser){
+            return res.status(400).json({message: "Incorrect username"})
+        }
+
+        const isValid = await bcrypt.compare(password, foundUser.password)
+
+        if(!isValid){
+            res.status(400).json({message: "wrong password"})
+        }
+
+        req.session.user = foundUser
+        req.session.isLoggedIn = true
+        res.render('homepage')
+    }catch(err){
+        res.status(500).json({message: "Error loggin in", err})
+    }
+})
+
+router.post('/logout', (req, res) =>{
+    req.session.destroy((err) => {
+        if (err) {
+          return res.status(500).send('Failed to log out');
+        }
+        res.send('User logged out');
+        console.log('Session after logout', req.session)
+      });
+})
+
 module.exports = router;

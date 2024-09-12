@@ -1,4 +1,7 @@
 <button><a href="/">Back</a></button>
+{{#if session.isLoggedIn}}
+<button>Add post</button>
+{{/if}}
 <div id="project-container">
     {{#each project}}
     <section class="gallery-project">
