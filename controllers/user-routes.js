@@ -46,36 +46,52 @@ router.delete('/:id', async(req,res) =>{
     }
 })
 
-router.post('/login', async(req, res) =>{
-    try{
-        const {name, password} = req.body
-        const foundUser = await User.findOne({where: {name: name}})
+router.post('/login', async (req, res) => {
+    try {
+        const { name, password } = req.body;
+        const foundUser = await User.findOne({ where: { name } });
 
-        if(!foundUser){
-            return res.status(400).json({message: "Incorrect username"})
+        if (!foundUser) {
+            return res.status(400).alert({ message: "Incorrect username" });
         }
 
-        const isValid = await bcrypt.compare(password, foundUser.password)
+        const isValid = await bcrypt.compare(password, foundUser.password);
 
-        if(!isValid){
-            res.status(400).json({message: "wrong password"})
+        if (!isValid) {
+            return res.status(400).alert({ message: "Wrong password" });
         }
 
-        req.session.user = foundUser
-        req.session.isLoggedIn = true
-        res.render('homepage')
-    }catch(err){
-        res.status(500).json({message: "Error loggin in", err})
+        req.session.save(() =>{
+            req.session.user = foundUser;
+            req.session.isLoggedIn = true;
+            res.redirect('/')
+        })
+
+        // Manually save session before rendering
+        /*
+        req.session.save((err) => {
+            if (err) {
+                return res.status(500).json({ message: "Error saving session", error: err });
+            }
+            res.render('profile', {
+                session: req.session,
+                user: req.session.user
+            });
+        });
+        */
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: "Error logging in", error: err });
     }
-})
+});
+
 
 router.post('/logout', (req, res) =>{
     req.session.destroy((err) => {
         if (err) {
           return res.status(500).send('Failed to log out');
         }
-        res.send('User logged out');
-        console.log('Session after logout', req.session)
+        res.render('homepage');
       });
 })
 

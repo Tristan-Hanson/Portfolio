@@ -1,3 +1,6 @@
+{{#if session.isLoggedIn}}
+<p>{{user.name}} is logged in</p>
+{{/if}}
 <div id="body-container">
     <div id="home-container">
         <div id="container-left">
@@ -70,7 +73,12 @@
                 <p>Outside of programming I enjoy writing super long rambling text that is able to fill up the space on a page so it looks more full and i'll be ready to fix it later</p>
             </section>
             <section id="credits">
-                <p>Website created by <a href="/login" id="login"><p>Tristan Hanson</p></a></p>
+                <p>Website created by
+                {{#if session.isLoggedIn}}
+                <a href="/profile" id="login"><p>Tristan Hanson</p></a>
+                {{else}}
+                <a href="/login" id="login"><p>Tristan Hanson</p></a></p>
+                {{/if}}
             </section>
         </div>
     </div>

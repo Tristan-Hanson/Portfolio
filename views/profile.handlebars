@@ -1,0 +1,54 @@
+<button><a href="/">Back</a></button>
+{{#if session.isLoggedIn}}
+<form action="/user/logout" method="post">
+    <button>Logout</button>
+</form>
+<section>
+    <form action="/project/" method="post" id="contact-form" enctype="multipart/form-data">
+        <input type="text" name="title" placeholder="Title">
+        <input type="text" name="description" placeholder="Description">
+        <input type="file" name="image" placeholder="Image">
+        <button type="submit">Submit</button>
+    </form>
+</section>
+<p>Welcome back {{user.name}}</p>
+<div id="project-container">
+    {{#each project}}
+    <section class="gallery-project">
+        <img src="{{image}}" class="gallery-image" />
+        <div>
+            <p>{{title}}</p>
+            <p>{{description}}</p>
+        </div>
+    <button data-project-id="{{id}}" onClick="deleteProject(this)">Delete</button>
+    </section>
+    {{/each}}
+</div>
+{{/if}}
+
+<!-- Script for deleting a photo -->
+<script>
+    async function deleteProject(button) {
+        const projectId = button.getAttribute('data-project-id');
+        try {
+        const response = await fetch(`/project/${projectId}`, {
+            method: 'DELETE',
+            headers: {
+            'Content-Type': 'application/json'
+            }
+        });
+
+        if (response.status === 200) {
+            const data = await response.json();
+            alert(data.message);
+            window.location.reload();
+        } else {
+            const errorData = await response.json();
+            alert('Error: ' + errorData.error);
+        }
+        } catch (error) {
+        console.error('Error:', error);
+        alert('An unexpected error occurred.');
+        }
+    }
+</script>
