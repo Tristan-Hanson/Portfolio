@@ -52,13 +52,13 @@ router.post('/login', async (req, res) => {
         const foundUser = await User.findOne({ where: { name } });
 
         if (!foundUser) {
-            return res.status(400).alert({ message: "Incorrect username" });
+            return res.status(400).json({ message: "Incorrect username" });
         }
 
         const isValid = await bcrypt.compare(password, foundUser.password);
 
         if (!isValid) {
-            return res.status(400).alert({ message: "Wrong password" });
+            return res.status(400).json({ message: "Wrong password" });
         }
 
         req.session.save(() =>{
